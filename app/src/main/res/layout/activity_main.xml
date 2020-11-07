@@ -6,13 +6,75 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+    <Button
+        android:id="@+id/button_matchsettings"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="open_match_settings"
+        android:text="@string/new_match"
+        app:layout_constraintBottom_toTopOf="@+id/button_hometeam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_hometeam"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="open_team"
+        android:text="@string/hometeam"
+        app:layout_constraintBottom_toTopOf="@+id/button_awayteam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_matchsettings" />
+
+    <Button
+        android:id="@+id/button_awayteam"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="open_team"
+        android:text="@string/awayteam"
+        app:layout_constraintBottom_toTopOf="@+id/button_scoreboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_hometeam" />
+
+    <Button
+        android:id="@+id/button_scoreboard"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="open_scoreboard"
+        android:text="@string/scoreboard"
+        app:layout_constraintBottom_toTopOf="@+id/button_complete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_awayteam" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/load_match"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_complete" />
+
+    <Button
+        android:id="@+id/button_complete"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="139dp"
+        android:text="@string/complete_match"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_scoreboard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

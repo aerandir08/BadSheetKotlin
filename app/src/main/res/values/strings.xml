@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">BadSheet</string>
+    <string name="new_match">Match Settings</string>
+    <string name="load_match">Load Match</string>
+    <string name="info">Info</string>
+    <string name="hometeam">Hometeam</string>
+    <string name="awayteam">Awayteam</string>
+    <string name="group">Group</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="location">Location</string>
+    <string name="scoreboard">Scoreboard</string>
+    <string name="complete_match">Complete Match</string>
+    <string name="_1_men_doubles">1. Men Doubles</string>
+    <string name="_2_men_doubles">2. Men Doubles</string>
+    <string name="women_doubles">Women Doubles</string>
+    <string name="_1_men_single">1. Men Single</string>
+    <string name="_2_men_single">2. Men Single</string>
+    <string name="_3_men_single">3. Men Single</string>
+    <string name="women_single">Women Single</string>
+    <string name="mixed">Mixed</string>
 </resources>

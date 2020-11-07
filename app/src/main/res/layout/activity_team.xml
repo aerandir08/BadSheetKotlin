@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="106dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_game_0"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/_1_men_doubles" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_0"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/text_game_1"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/_2_men_doubles" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/text_game_2"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/women_doubles" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_5"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/text_game_3"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/_1_men_single" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_6"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/text_game_4"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/_2_men_single" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_7"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/text_game_5"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/_3_men_single" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_8"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/text_game_6"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/women_single" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_9"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/text_game_7"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="@string/mixed" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_10"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/edit_name_11"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
