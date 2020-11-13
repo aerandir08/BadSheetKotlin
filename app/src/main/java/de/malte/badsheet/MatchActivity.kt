@@ -29,8 +29,8 @@ class MatchActivity : AppCompatActivity()
     /** Get Match Settings from View **/
     fun get_match_settings()
     {
-        match.TeamA = edit_hometeam.text.toString()
-        match.TeamB = edit_awayteam.text.toString()
+        match.TeamA.Name = edit_hometeam.text.toString()
+        match.TeamB.Name = edit_awayteam.text.toString()
         match.Location = edit_location.text.toString()
         match.Group = edit_group.text.toString()
         match.Time = edit_time.text.toString()
@@ -39,8 +39,8 @@ class MatchActivity : AppCompatActivity()
     /** Set Match Settings to View **/
     fun set_match_settings()
     {
-        edit_hometeam.setText(match.TeamA)
-        edit_awayteam.setText(match.TeamB)
+        edit_hometeam.setText(match.TeamA.Name)
+        edit_awayteam.setText(match.TeamB.Name)
         edit_location.setText(match.Location)
         edit_group.setText(match.Group)
         edit_time.setText(match.Time)

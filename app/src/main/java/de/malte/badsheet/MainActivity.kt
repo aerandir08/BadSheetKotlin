@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainActivity : AppCompatActivity()
+{
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
@@ -25,11 +27,11 @@ class MainActivity : AppCompatActivity() {
         var intent = Intent()
         if(team == "home")
         {
-            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamA)}
+            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamA.Name)}
         }
         else
         {
-            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamB)}
+            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamB.Name)}
         }
         startActivity(intent)
     }
@@ -51,5 +53,17 @@ class MainActivity : AppCompatActivity() {
     {
         val intent = Intent(this, ScoreboardActivity::class.java).apply {}
         startActivity(intent)
+    }
+
+    /** Called when Save Match is clicked. **/
+    fun save_match(view: View)
+    {
+
+    }
+
+    /** Called when Load Match is clicked. **/
+    fun load_match(view: View)
+    {
+
     }
 }

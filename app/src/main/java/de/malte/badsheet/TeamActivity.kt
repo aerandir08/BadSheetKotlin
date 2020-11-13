@@ -10,29 +10,28 @@ import kotlinx.android.synthetic.main.activity_team.*
 
 class TeamActivity : AppCompatActivity() {
 
+    private var match = Match()
     private var team = Team("")
+    private var teamname = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team)
 
-        val teamname = intent.getStringExtra("TEAM")!!
-        team = Team(teamname)
-
-        var json_team = Util().LoadPreferences(this, team.Name)
-        if (json_team != "")
-        {
-            var gson: Gson = Gson()
-            team = gson.fromJson(json_team, Team::class.java)
-        }
+        teamname = intent.getStringExtra("TEAM")!!
+        match = Util().GetMatch(this)
+        team = match.get_team(teamname)
         set_player_names()
     }
 
     /** Save Team to sharedPreferences **/
-    override fun onPause() {
+    override fun onPause()
+    {
         super.onPause()
         get_player_names()
-        Util().SavePreferences(this, team, team.Name)
+        match.set_team(teamname, team)
+        Util().SavePreferences(this, match, "MATCH")
     }
 
     /** Get Player Names from View **/
