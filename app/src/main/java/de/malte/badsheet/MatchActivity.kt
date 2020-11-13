@@ -1,9 +1,7 @@
 package de.malte.badsheet
 
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_match_settings.*
 
 class MatchActivity : AppCompatActivity()
@@ -15,6 +13,8 @@ class MatchActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match_settings)
         match = Util().GetMatch(this)
+
+        title = getString(R.string.match_settings)
         set_match_settings()
     }
 

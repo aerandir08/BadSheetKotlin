@@ -22,6 +22,8 @@ class TeamActivity : AppCompatActivity() {
         teamname = intent.getStringExtra("TEAM")!!
         match = Util().GetMatch(this)
         team = match.get_team(teamname)
+
+        title = team.Name
         set_player_names()
     }
 

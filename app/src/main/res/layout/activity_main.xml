@@ -13,7 +13,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="20dp"
         android:onClick="open_match_settings"
-        android:text="@string/new_match"
+        android:text="@string/match_settings"
         app:layout_constraintBottom_toTopOf="@+id/button_hometeam"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
