@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_match_settings.*
 
-class MatchSettings : AppCompatActivity()
+class MatchActivity : AppCompatActivity()
 {
     private var match = Match()
 
@@ -14,42 +14,19 @@ class MatchSettings : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match_settings)
-        LoadPreferences()
+        match = Util().GetMatch(this)
         set_match_settings()
     }
 
+    /** Save Match to sharedPreferences **/
     override fun onPause()
     {
         super.onPause()
         get_match_settings()
-        SavePreferences()
+        Util().SavePreferences(this, match, "MATCH")
     }
 
-    fun SavePreferences()
-    {
-        var sharedPreferences: SharedPreferences = getPreferences(MODE_PRIVATE)
-        var editor: SharedPreferences.Editor = sharedPreferences.edit()
-        var gson: Gson = Gson()
-        var json_match: String = gson.toJson(match)
-        editor.putString("MATCH", json_match)
-        editor.commit()
-    }
-
-    fun LoadPreferences()
-    {
-        var sharedpreferences: SharedPreferences = getPreferences(MODE_PRIVATE)
-        var gson: Gson = Gson()
-        var json_match: String? = sharedpreferences.getString("MATCH", "")
-        if(json_match != "")
-        {
-            match = gson.fromJson(json_match, Match::class.java)
-        }
-        else
-        {
-            match = Match()
-        }
-    }
-
+    /** Get Match Settings from View **/
     fun get_match_settings()
     {
         match.TeamA = edit_hometeam.text.toString()
@@ -59,6 +36,7 @@ class MatchSettings : AppCompatActivity()
         match.Time = edit_time.text.toString()
     }
 
+    /** Set Match Settings to View **/
     fun set_match_settings()
     {
         edit_hometeam.setText(match.TeamA)
@@ -66,9 +44,5 @@ class MatchSettings : AppCompatActivity()
         edit_location.setText(match.Location)
         edit_group.setText(match.Group)
         edit_time.setText(match.Time)
-    }
-
-    fun get_match(): Match {
-        return match
     }
 }

@@ -1,6 +1,6 @@
 package de.malte.badsheet
 
-
+/** Class to hold data from a Match **/
 class Match
 {
     var TeamA: String = ""

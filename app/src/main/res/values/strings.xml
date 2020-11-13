@@ -19,4 +19,5 @@
     <string name="_3_men_single">3. Men Single</string>
     <string name="women_single">Women Single</string>
     <string name="mixed">Mixed</string>
+    <string name="sharedPreferences">SHARED_PREFERENCES</string>
 </resources>

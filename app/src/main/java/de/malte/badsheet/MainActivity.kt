@@ -14,21 +14,42 @@ class MainActivity : AppCompatActivity() {
     /** Called when Button Match Settings is clicked. **/
     fun open_match_settings(view: View)
     {
-        val intent = Intent(this, MatchSettings::class.java).apply {}
+        val intent = Intent(this, MatchActivity::class.java).apply {}
         startActivity(intent)
     }
 
-    /** Called when a Team Button is clicked. **/
-    fun open_team(view: View)
+    /** Called when a Team is clicked. **/
+    fun open_team(team: String)
     {
-        val intent = Intent(this, Team::class.java).apply {/*TODO: Hier muss das Klassenobjekt des jeweiligen Teams rein.*/}
+        var match = Util().GetMatch(this)
+        var intent = Intent()
+        if(team == "home")
+        {
+            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamA)}
+        }
+        else
+        {
+            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamB)}
+        }
         startActivity(intent)
+    }
+
+    /** Called when TeamA is clicked **/
+    fun open_teamA(view: View)
+    {
+        open_team("home")
+    }
+
+    /** Called when TeamB is clicked **/
+    fun open_teamB(view: View)
+    {
+        open_team("away")
     }
 
     /** Called when Button Scoreboard is clicked. **/
     fun open_scoreboard(view: View)
     {
-        val intent = Intent(this, Scoreboard::class.java).apply {}
+        val intent = Intent(this, ScoreboardActivity::class.java).apply {}
         startActivity(intent)
     }
 }
