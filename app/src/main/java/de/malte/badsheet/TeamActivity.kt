@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import androidx.core.view.children
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_team.*
 
 class TeamActivity : AppCompatActivity() {
@@ -33,14 +32,14 @@ class TeamActivity : AppCompatActivity() {
         super.onPause()
         get_player_names()
         match.set_team(teamname, team)
-        Util().SavePreferences(this, match, "MATCH")
+        Util().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Get Player Names from View **/
     fun get_player_names()
     {
-        var layout: LinearLayout = layout_linearLayout
-        var idx: Int = 0
+        val layout: LinearLayout = layout_linearLayout
+        var idx = 0
         for (child in layout.children)
         {
             if (child is AutoCompleteTextView)
@@ -54,8 +53,8 @@ class TeamActivity : AppCompatActivity() {
     /** Set Player Names to View **/
     fun set_player_names()
     {
-        var layout: LinearLayout = layout_linearLayout
-        var idx: Int = 0
+        val layout: LinearLayout = layout_linearLayout
+        var idx = 0
         for (child in layout.children)
         {
             if (child is AutoCompleteTextView)

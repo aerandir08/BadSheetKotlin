@@ -23,7 +23,7 @@ class MatchActivity : AppCompatActivity()
     {
         super.onPause()
         get_match_settings()
-        Util().SavePreferences(this, match, "MATCH")
+        Util().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Get Match Settings from View **/

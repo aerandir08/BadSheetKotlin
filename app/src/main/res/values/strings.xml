@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">BadSheet</string>
     <string name="match_settings">Match Settings</string>
-    <string name="load_match">Load Match</string>
     <string name="info">Info</string>
     <string name="hometeam">Hometeam</string>
     <string name="awayteam">Awayteam</string>
@@ -20,4 +19,9 @@
     <string name="women_single">Women Single</string>
     <string name="mixed">Mixed</string>
     <string name="sharedPreferences">SHARED_PREFERENCES</string>
+    <string name="errorfile">Error: File does not exist.</string>
+    <string name="save_match">Save Match</string>
+    <string name="load_match">Load Match</string>
+    <string name="reset_match">Reset Match</string>
+    <string name="remove_matches">Remove Matches</string>
 </resources>
