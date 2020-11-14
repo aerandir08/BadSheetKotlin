@@ -7,6 +7,8 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.core.view.children
+import de.malte.badsheet.classes.Match
+import de.malte.badsheet.utility.SharedPref
 import kotlinx.android.synthetic.main.activity_scoreboard.*
 
 class ScoreboardActivity : AppCompatActivity()
@@ -19,7 +21,7 @@ class ScoreboardActivity : AppCompatActivity()
         setContentView(R.layout.activity_scoreboard)
         title = getString(R.string.scoreboard)
 
-        match = Util().GetMatch(this)
+        match = SharedPref().GetMatch(this)
         set_scores()
         set_names()
     }
@@ -29,7 +31,7 @@ class ScoreboardActivity : AppCompatActivity()
     {
         super.onPause()
         get_scores()
-        Util().SaveSharedPreference(this, match, "MATCH")
+        SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Get Digits from Edittext

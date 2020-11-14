@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import androidx.core.view.children
+import de.malte.badsheet.classes.Match
+import de.malte.badsheet.classes.Team
+import de.malte.badsheet.utility.SharedPref
 import kotlinx.android.synthetic.main.activity_team.*
 
 class TeamActivity : AppCompatActivity() {
@@ -19,7 +22,7 @@ class TeamActivity : AppCompatActivity() {
         setContentView(R.layout.activity_team)
 
         teamname = intent.getStringExtra("TEAM")!!
-        match = Util().GetMatch(this)
+        match = SharedPref().GetMatch(this)
         team = match.get_team(teamname)
 
         title = team.Name
@@ -32,7 +35,7 @@ class TeamActivity : AppCompatActivity() {
         super.onPause()
         get_player_names()
         match.set_team(teamname, team)
-        Util().SaveSharedPreference(this, match, "MATCH")
+        SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Get Player Names from View **/

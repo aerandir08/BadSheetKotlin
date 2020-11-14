@@ -1,4 +1,4 @@
-package de.malte.badsheet
+package de.malte.badsheet.classes
 
 class Scoreboard
 {

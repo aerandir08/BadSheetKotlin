@@ -11,6 +11,8 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
+import de.malte.badsheet.classes.Match
+import de.malte.badsheet.utility.SharedPref
 import java.io.*
 
 class MainActivity : AppCompatActivity()
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        match = Util().GetMatch(this)
+        match = SharedPref().GetMatch(this)
     }
 
     /** #############################################################
@@ -174,7 +176,7 @@ class MainActivity : AppCompatActivity()
             val jsonData: String = ois.readText()
             val gson = Gson()
             match = gson.fromJson(jsonData, Match::class.java)
-            Util().SaveSharedPreference(this, match, "MATCH")
+            SharedPref().SaveSharedPreference(this, match, "MATCH")
         }
         else
         {
@@ -199,7 +201,7 @@ class MainActivity : AppCompatActivity()
     fun reset_match()
     {
         val match = Match()
-        Util().SaveSharedPreference(this, match, "MATCH")
+        SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
 

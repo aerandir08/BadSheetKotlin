@@ -1,4 +1,4 @@
-package de.malte.badsheet
+package de.malte.badsheet.classes
 
 /** Class to hold data from a Match **/
 class Match

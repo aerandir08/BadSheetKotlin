@@ -1,12 +1,14 @@
-package de.malte.badsheet
+package de.malte.badsheet.utility
 
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import de.malte.badsheet.R
+import de.malte.badsheet.classes.Match
 
-/** Utility class **/
-class Util {
+/** Class for saving SharedPreferences **/
+class SharedPref {
     /** Save given object to SharedPreferences
      * @param act Activity
      * @param obj Object to save

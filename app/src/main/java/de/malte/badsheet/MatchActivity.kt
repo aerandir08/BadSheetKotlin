@@ -2,6 +2,8 @@ package de.malte.badsheet
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import de.malte.badsheet.classes.Match
+import de.malte.badsheet.utility.SharedPref
 import kotlinx.android.synthetic.main.activity_match_settings.*
 
 class MatchActivity : AppCompatActivity()
@@ -12,7 +14,7 @@ class MatchActivity : AppCompatActivity()
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match_settings)
-        match = Util().GetMatch(this)
+        match = SharedPref().GetMatch(this)
 
         title = getString(R.string.match_settings)
         set_match_settings()
@@ -23,7 +25,7 @@ class MatchActivity : AppCompatActivity()
     {
         super.onPause()
         get_match_settings()
-        Util().SaveSharedPreference(this, match, "MATCH")
+        SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Get Match Settings from View **/
