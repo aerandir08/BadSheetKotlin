@@ -31,6 +31,7 @@ class ScoreboardActivity : AppCompatActivity()
     {
         super.onPause()
         get_scores()
+        match.calc_match()
         SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 

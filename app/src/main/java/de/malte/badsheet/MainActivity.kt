@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
 
         match = SharedPref().GetMatch(this)
+        SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** #############################################################
