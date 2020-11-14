@@ -24,4 +24,12 @@
     <string name="load_match">Load Match</string>
     <string name="reset_match">Reset Match</string>
     <string name="remove_matches">Remove Matches</string>
+    <string name="_1_md">1 MD</string>
+    <string name="_2_md">2 MD</string>
+    <string name="wd">WD</string>
+    <string name="_1_ms">1 MS</string>
+    <string name="_2_ms">2 MS</string>
+    <string name="_3_ms">3 MS</string>
+    <string name="ws">WS</string>
+    <string name="mx">MX</string>
 </resources>

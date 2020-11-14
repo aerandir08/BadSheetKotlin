@@ -8,6 +8,7 @@ class Match
     var Location: String = ""
     var Group: String = ""
     var Time: String = ""
+    var Scoreboard: Scoreboard = Scoreboard()
 
     fun get_team(teamname: String): Team
     {

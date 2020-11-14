@@ -11,7 +11,8 @@
         android:theme="@style/Theme.BadSheet"
         android:fullBackupContent="@xml/backup_rules">
         <activity android:name=".ScoreboardActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape"/>
         <activity android:name=".TeamActivity"
             android:parentActivityName=".MainActivity"
             android:launchMode="singleTask"/>
