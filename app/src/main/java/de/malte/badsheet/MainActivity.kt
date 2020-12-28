@@ -76,6 +76,13 @@ class MainActivity : AppCompatActivity()
         startActivity(intent)
     }
 
+    /** Called when Button Complete Match is clicked. **/
+    fun openCompleteMatch(view: View)
+    {
+        val intent = Intent(this, CompleteMatchActivity::class.java).apply {}
+        startActivity(intent)
+    }
+
     /** #############################################################
      *
      *  Menu Functions

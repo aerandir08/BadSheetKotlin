@@ -33,4 +33,9 @@
     <string name="ws">WS</string>
     <string name="mx">MX</string>
     <string name="draw">Draw</string>
+    <string name="show_results">Show Results</string>
+    <string name="sign_home">Sign Home</string>
+    <string name="sign_away">Sign Away</string>
+    <string name="finish_match">Finish Match</string>
+    <string name="share_results">Share Results</string>
 </resources>
