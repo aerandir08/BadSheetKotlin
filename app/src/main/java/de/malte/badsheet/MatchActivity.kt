@@ -17,19 +17,19 @@ class MatchActivity : AppCompatActivity()
         match = SharedPref().GetMatch(this)
 
         title = getString(R.string.match_settings)
-        set_match_settings()
+        setMatchSettings()
     }
 
     /** Save Match to sharedPreferences **/
     override fun onPause()
     {
         super.onPause()
-        get_match_settings()
+        getMatchSettings()
         SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Get Match Settings from View **/
-    fun get_match_settings()
+    fun getMatchSettings()
     {
         match.TeamA.Name = edit_hometeam.text.toString()
         match.TeamB.Name = edit_awayteam.text.toString()
@@ -39,7 +39,7 @@ class MatchActivity : AppCompatActivity()
     }
 
     /** Set Match Settings to View **/
-    fun set_match_settings()
+    fun setMatchSettings()
     {
         edit_hometeam.setText(match.TeamA.Name)
         edit_awayteam.setText(match.TeamB.Name)

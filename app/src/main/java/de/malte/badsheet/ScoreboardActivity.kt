@@ -22,16 +22,16 @@ class ScoreboardActivity : AppCompatActivity()
         title = getString(R.string.scoreboard)
 
         match = SharedPref().GetMatch(this)
-        set_scores()
-        set_names()
+        setScores()
+        setNames()
     }
 
     /** Save Team to sharedPreferences **/
     override fun onPause()
     {
         super.onPause()
-        get_scores()
-        match.calc_match()
+        getScores()
+        match.calcMatch()
         SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
@@ -39,7 +39,7 @@ class ScoreboardActivity : AppCompatActivity()
      * @param textfield Textfield to get Data from
      * @return Array of both Points
      */
-    fun get_digits(textfield: EditText): ArrayList<Int>
+    fun getDigits(textfield: EditText): ArrayList<Int>
     {
         val value = textfield.text.toString()
         val parts = value.split("-")
@@ -54,7 +54,7 @@ class ScoreboardActivity : AppCompatActivity()
     }
 
     /** Get Scores from View **/
-    fun get_scores()
+    fun getScores()
     {
         val layout: TableLayout = layout_tablelayout
         var idx = 0
@@ -66,7 +66,7 @@ class ScoreboardActivity : AppCompatActivity()
                 {
                     if (edit is EditText)
                     {
-                        val points = get_digits(edit)
+                        val points = getDigits(edit)
                         match.Scoreboard.Score[idx] = points[0]
                         match.Scoreboard.Score[idx + 1] = points[1]
                         idx += 2
@@ -77,7 +77,7 @@ class ScoreboardActivity : AppCompatActivity()
     }
 
     /** Set Scores to View **/
-    fun set_scores()
+    fun setScores()
     {
         val layout: TableLayout = layout_tablelayout
         var idx = 0
@@ -107,13 +107,13 @@ class ScoreboardActivity : AppCompatActivity()
     }
 
     /** Set Names **/
-    fun set_names()
+    fun setNames()
     {
         val layout: TableLayout = layout_tablelayout
 
         // Build List with alternating values from both teams
-        val namesA = match.TeamA.get_pretty_strings()
-        val namesB = match.TeamB.get_pretty_strings()
+        val namesA = match.TeamA.getPrettyStrings()
+        val namesB = match.TeamB.getPrettyStrings()
         val names = namesA.zip(namesB).flatMap { listOf(it.first, it.second) } + namesA.drop(namesB.size)
 
         var idx = 0

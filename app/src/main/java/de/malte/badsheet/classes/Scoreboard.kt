@@ -15,7 +15,7 @@ class Scoreboard
     var winner: Boolean? = null
 
     /** Reset all values before calculating **/
-    fun reset_values()
+    fun resetValues()
     {
         setsA = 0
         setsB = 0
@@ -27,7 +27,7 @@ class Scoreboard
     }
 
     /** Calculate one Game **/
-    fun calc_game(p: MutableList<Int>): Game
+    fun calcGame(p: MutableList<Int>): Game
     {
         val game = Game()
         for (i in 0..4 step 2)
@@ -44,7 +44,7 @@ class Scoreboard
             game.pointsB += p[i+1]
         }
 
-        game.who_wins()
+        game.whoWins()
         return game
     }
 }
@@ -57,7 +57,7 @@ class Game
     var pointsB = 0
     var winner: Boolean? = null
 
-    fun who_wins()
+    fun whoWins()
     {
         if (setsA > setsB)
         {

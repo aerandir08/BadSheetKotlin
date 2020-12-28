@@ -23,23 +23,23 @@ class TeamActivity : AppCompatActivity() {
 
         teamname = intent.getStringExtra("TEAM")!!
         match = SharedPref().GetMatch(this)
-        team = match.get_team(teamname)
+        team = match.getTeam(teamname)
 
         title = team.Name
-        set_player_names()
+        setPlayerNames()
     }
 
     /** Save Team to sharedPreferences **/
     override fun onPause()
     {
         super.onPause()
-        get_player_names()
-        match.set_team(teamname, team)
+        getPlayerNames()
+        match.setTeam(teamname, team)
         SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Get Player Names from View **/
-    fun get_player_names()
+    fun getPlayerNames()
     {
         val layout: LinearLayout = layout_linearLayout
         var idx = 0
@@ -54,7 +54,7 @@ class TeamActivity : AppCompatActivity() {
     }
 
     /** Set Player Names to View **/
-    fun set_player_names()
+    fun setPlayerNames()
     {
         val layout: LinearLayout = layout_linearLayout
         var idx = 0

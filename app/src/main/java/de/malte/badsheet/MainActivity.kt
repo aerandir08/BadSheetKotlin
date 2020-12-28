@@ -36,14 +36,14 @@ class MainActivity : AppCompatActivity()
      */
 
     /** Called when Button Match Settings is clicked. **/
-    fun open_match_settings(view: View)
+    fun openMatchSettings(view: View)
     {
         val intent = Intent(this, MatchActivity::class.java).apply {}
         startActivity(intent)
     }
 
     /** Called when a Team is clicked. **/
-    fun open_team(team: String)
+    fun openTeam(team: String)
     {
         val intent: Intent
         if(team == "home")
@@ -58,19 +58,19 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Called when TeamA is clicked **/
-    fun open_teamA(view: View)
+    fun openTeamA(view: View)
     {
-        open_team("home")
+        openTeam("home")
     }
 
     /** Called when TeamB is clicked **/
-    fun open_teamB(view: View)
+    fun openTeamB(view: View)
     {
-        open_team("away")
+        openTeam("away")
     }
 
     /** Called when Button Scoreboard is clicked. **/
-    fun open_scoreboard(view: View)
+    fun openScoreboard(view: View)
     {
         val intent = Intent(this, ScoreboardActivity::class.java).apply {}
         startActivity(intent)
@@ -97,18 +97,18 @@ class MainActivity : AppCompatActivity()
         return when (item.itemId)
         {
             R.id.save -> {
-                save_match()
+                saveMatch()
                 true
             }
             R.id.load -> {
-                load_chooser()
+                loadChooser()
                 true
             }
             R.id.reset -> {
-                reset_match()
+                resetMatch()
                 true
             }R.id.remove -> {
-                remove_chooser()
+                removeChooser()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -116,17 +116,17 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Open Load Chooser Dialog **/
-    fun load_chooser()
+    fun loadChooser()
     {
         val files: Array<String> = fileList()
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Choose Match")
-        builder.setItems(files) { _, which -> load_match(files[which])}
+        builder.setItems(files) { _, which -> loadMatch(files[which])}
         builder.show()
     }
 
     /** Open Remove Chooser Dialog **/
-    fun remove_chooser()
+    fun removeChooser()
     {
         val files: Array<String> = fileList()
         val builder = AlertDialog.Builder(this)
@@ -146,14 +146,14 @@ class MainActivity : AppCompatActivity()
         builder.setPositiveButton("Remove") { _, i ->
             for (j in selected.indices)
             {
-                remove_file(files[selected[j]])
+                removeFile(files[selected[j]])
             }
         }
         builder.show()
     }
 
     /** Save Match to harddrive **/
-    fun save_match()
+    fun saveMatch()
     {
         val filename: String = match.TeamA.Name + "_" + match.TeamB.Name + "_" + match.Time + ".json"
         val gson = Gson()
@@ -167,7 +167,7 @@ class MainActivity : AppCompatActivity()
     /** Load Match from harddrive
      * @param filename File which should be loaded
      */
-    fun load_match(filename: String)
+    fun loadMatch(filename: String)
     {
         val path = "$filesDir/$filename"
         if (File(path).exists())
@@ -188,7 +188,7 @@ class MainActivity : AppCompatActivity()
     /** Remove File
      * @param filename File which should be deleted
      */
-    fun remove_file(filename: String)
+    fun removeFile(filename: String)
     {
         val path = "$filesDir/$filename"
         val file = File(path)
@@ -199,7 +199,7 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Reset the current Match **/
-    fun reset_match()
+    fun resetMatch()
     {
         val match = Match()
         SharedPref().SaveSharedPreference(this, match, "MATCH")

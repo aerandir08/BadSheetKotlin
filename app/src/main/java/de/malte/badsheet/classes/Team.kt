@@ -11,7 +11,7 @@ class Team(var Name: String)
     var Sets: ArrayList<Int> = arrayListOf()
     var Games: ArrayList<Int> = arrayListOf()
 
-    fun get_pretty_strings(): Array<String?>
+    fun getPrettyStrings(): Array<String?>
     {
         val names = arrayOfNulls<String>(8)
         names[0] = "${Player[0]}\n${Player[1]}"

@@ -15,21 +15,21 @@ class Match
     var Winner: String = ""
 
     /** Calculate all points, sets, games and the Match-winner **/
-    fun calc_match()
+    fun calcMatch()
     {
-        Scoreboard.reset_values()
+        Scoreboard.resetValues()
         var list: MutableList<Int>
         // Go over all 8 Games
         for (i in 0..47 step 6)
         {
             list = Scoreboard.Score.subList(i, i+6)
-            add_game(Scoreboard.calc_game(list))
+            addGame(Scoreboard.calcGame(list))
         }
-        calc_match_winner()
+        calcMatchWinner()
     }
 
     /** Calculate winner of a match **/
-    private fun calc_match_winner()
+    private fun calcMatchWinner()
     {
         if (TeamA.Games.sum() > TeamB.Games.sum())
         {
@@ -46,7 +46,7 @@ class Match
     }
 
     /** Update after one Game **/
-    private fun add_game(game: Game)
+    private fun addGame(game: Game)
     {
         TeamA.Sets.add(game.setsA)
         TeamB.Sets.add(game.setsB)
@@ -70,7 +70,7 @@ class Match
         }
     }
 
-    fun get_team(teamname: String): Team
+    fun getTeam(teamname: String): Team
     {
         if (TeamA.Name == teamname)
         {
@@ -83,7 +83,7 @@ class Match
         return Team("")
     }
 
-    fun set_team(teamname: String, team: Team)
+    fun setTeam(teamname: String, team: Team)
     {
         if (TeamA.Name == teamname)
         {
