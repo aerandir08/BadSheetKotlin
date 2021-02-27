@@ -38,4 +38,11 @@
     <string name="sign_away">Sign Away</string>
     <string name="finish_match">Finish Match</string>
     <string name="share_results">Share Results</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="no_permission">No Permission</string>
+    <string name="signs_folder">/signs</string>
+    <string name="sign_saved">Signature Saved</string>
+    <string name="abort">Abort</string>
+    <string name="signature">Signature</string>
 </resources>

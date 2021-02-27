@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.malte.badsheet">
-
     <application
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BadSheet">
-        <activity android:name=".CompleteMatchActivity" />
+        <activity
+            android:name=".SignatureActivity"
+            android:parentActivityName=".CompleteMatchActivity" />
+        <activity
+            android:name=".CompleteMatchActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ScoreboardActivity"
             android:parentActivityName=".MainActivity"

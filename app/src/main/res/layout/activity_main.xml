@@ -55,6 +55,7 @@
             android:id="@+id/button_complete_match"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="openCompleteMatch"
             android:text="@string/complete_match" />
     </LinearLayout>
 
