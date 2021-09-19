@@ -8,17 +8,20 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.core.view.children
 import de.malte.badsheet.classes.Match
+import de.malte.badsheet.databinding.ActivityScoreboardBinding
 import de.malte.badsheet.utility.SharedPref
-import kotlinx.android.synthetic.main.activity_scoreboard.*
 
 class ScoreboardActivity : AppCompatActivity()
 {
+    private lateinit var binding: ActivityScoreboardBinding
     private var match = Match()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scoreboard)
+        binding = ActivityScoreboardBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         title = getString(R.string.scoreboard)
 
         match = SharedPref().GetMatch(this)
@@ -56,7 +59,7 @@ class ScoreboardActivity : AppCompatActivity()
     /** Get Scores from View **/
     fun getScores()
     {
-        val layout: TableLayout = layout_tablelayout
+        val layout: TableLayout = binding.layoutTablelayout
         var idx = 0
         for (row in layout.children)
         {
@@ -79,7 +82,7 @@ class ScoreboardActivity : AppCompatActivity()
     /** Set Scores to View **/
     fun setScores()
     {
-        val layout: TableLayout = layout_tablelayout
+        val layout: TableLayout = binding.layoutTablelayout
         var idx = 0
         var text: String
         for (row in layout.children)
@@ -109,7 +112,7 @@ class ScoreboardActivity : AppCompatActivity()
     /** Set Names **/
     fun setNames()
     {
-        val layout: TableLayout = layout_tablelayout
+        val layout: TableLayout = binding.layoutTablelayout
 
         // Build List with alternating values from both teams
         val namesA = match.TeamA.getPrettyStrings()

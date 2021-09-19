@@ -7,11 +7,12 @@ import android.widget.LinearLayout
 import androidx.core.view.children
 import de.malte.badsheet.classes.Match
 import de.malte.badsheet.classes.Team
+import de.malte.badsheet.databinding.ActivityTeamBinding
 import de.malte.badsheet.utility.SharedPref
-import kotlinx.android.synthetic.main.activity_team.*
 
 class TeamActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityTeamBinding
     private var match = Match()
     private var team = Team("")
     private var teamname = ""
@@ -19,7 +20,9 @@ class TeamActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_team)
+        binding = ActivityTeamBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         teamname = intent.getStringExtra("TEAM")!!
         match = SharedPref().GetMatch(this)
@@ -41,7 +44,7 @@ class TeamActivity : AppCompatActivity() {
     /** Get Player Names from View **/
     fun getPlayerNames()
     {
-        val layout: LinearLayout = layout_linearLayout
+        val layout: LinearLayout = binding.layoutLinearLayout
         var idx = 0
         for (child in layout.children)
         {
@@ -56,7 +59,7 @@ class TeamActivity : AppCompatActivity() {
     /** Set Player Names to View **/
     fun setPlayerNames()
     {
-        val layout: LinearLayout = layout_linearLayout
+        val layout: LinearLayout = binding.layoutLinearLayout
         var idx = 0
         for (child in layout.children)
         {

@@ -6,20 +6,23 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import de.malte.badsheet.classes.Match
+import de.malte.badsheet.databinding.ActivitySignatureBinding
 import de.malte.badsheet.utility.SharedPref
-import kotlinx.android.synthetic.main.activity_signature.*
 import java.io.File
 import java.io.FileOutputStream
 
 class SignatureActivity : AppCompatActivity()
 {
+    private lateinit var binding: ActivitySignatureBinding
     private lateinit var match: Match
     private lateinit var teamname: String
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signature)
+        binding = ActivitySignatureBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         teamname = intent.getStringExtra("TEAM")!!
         title = getString(R.string.signature) + " " + teamname
@@ -40,7 +43,7 @@ class SignatureActivity : AppCompatActivity()
      */
     fun clearSignature(view: View)
     {
-        signature_view.clearSignature()
+        binding.signatureView.clearSignature()
     }
 
     /**
@@ -58,7 +61,7 @@ class SignatureActivity : AppCompatActivity()
         {
             filename = "sign_away.png"
         }
-        saveImage(signature_view.signature, filename)
+        saveImage(binding.signatureView.signature, filename)
     }
 
     /**
