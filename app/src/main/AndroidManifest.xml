@@ -11,22 +11,28 @@
         android:theme="@style/Theme.BadSheet">
         <activity
             android:name=".SignatureActivity"
-            android:parentActivityName=".CompleteMatchActivity" />
+            android:parentActivityName=".CompleteMatchActivity"
+            android:exported="false"/>
         <activity
             android:name=".CompleteMatchActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:exported="false"/>
         <activity
             android:name=".ScoreboardActivity"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:exported="false"/>
         <activity
             android:name=".TeamActivity"
             android:launchMode="singleTask"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:exported="false"/>
         <activity
             android:name=".MatchActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:exported="false"/>
+        <activity android:name=".MainActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
