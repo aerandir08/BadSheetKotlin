@@ -3,16 +3,19 @@ package de.malte.badsheet
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import de.malte.badsheet.classes.Match
+import de.malte.badsheet.databinding.ActivityMainBinding
 import de.malte.badsheet.utility.SharedPref
 import java.io.*
+
 
 class MainActivity : AppCompatActivity()
 {
@@ -21,7 +24,8 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.main = this
 
         match = SharedPref().GetMatch(this)
         SharedPref().SaveSharedPreference(this, match, "MATCH")

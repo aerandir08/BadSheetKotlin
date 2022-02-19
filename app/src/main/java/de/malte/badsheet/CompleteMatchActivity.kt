@@ -2,11 +2,11 @@ package de.malte.badsheet
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import de.malte.badsheet.classes.Match
+import de.malte.badsheet.databinding.ActivityCompleteMatchBinding
 import de.malte.badsheet.utility.SharedPref
-import java.io.File
 
 class CompleteMatchActivity : AppCompatActivity()
 {
@@ -16,7 +16,9 @@ class CompleteMatchActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_complete_match)
+//        setContentView(R.layout.activity_complete_match)
+        val binding: ActivityCompleteMatchBinding = DataBindingUtil.setContentView(this, R.layout.activity_complete_match)
+        binding.setCompleteMatch(this)
 
         title = getString(R.string.complete_match)
 
