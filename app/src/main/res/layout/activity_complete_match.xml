@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="complete_match"
+            type="de.malte.badsheet.CompleteMatchActivity" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -23,36 +29,37 @@
             android:id="@+id/button_results"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="showResults"
+            android:onClick="@{() -> complete_match.showResults()"
             android:text="@string/show_results" />
 
         <Button
             android:id="@+id/button_sign_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="signHome"
+            android:onClick="@{() -> complete_match.signHome()"
             android:text="@string/sign_home" />
 
         <Button
             android:id="@+id/button_sign_away"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="signAway"
+            android:onClick="@{() -> complete_match.signAway()"
             android:text="@string/sign_away" />
 
         <Button
             android:id="@+id/button_finish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="finishMatch"
+            android:onClick="@{() -> complete_match.finishMatch()"
             android:text="@string/finish_match" />
 
         <Button
             android:id="@+id/button_share"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="shareResults"
+            android:onClick="@{() -> complete_match.shareResults()"
             android:text="@string/share_results" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -41,7 +41,7 @@ class SignatureActivity : AppCompatActivity()
     /**
      * Clear Signature View
      */
-    fun clearSignature(view: View)
+    fun clearSignature()
     {
         binding.signatureView.clearSignature()
     }

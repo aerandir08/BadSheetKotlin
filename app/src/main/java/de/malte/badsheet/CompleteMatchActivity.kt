@@ -25,33 +25,33 @@ class CompleteMatchActivity : AppCompatActivity()
     }
 
     /** Called when Button Show Results is clicked. **/
-    fun showResults(view: View)
+    fun showResults()
     {
         TODO()
     }
 
     /** Called when Button Sign Home is clicked. **/
-    fun signHome(view: View)
+    fun signHome()
     {
         val intent = Intent(this, SignatureActivity::class.java).apply {putExtra("TEAM", getString(R.string.hometeam))}
         startActivity(intent)
     }
 
     /** Called when Button Sign Away is clicked. **/
-    fun signAway(view: View)
+    fun signAway()
     {
         val intent = Intent(this, SignatureActivity::class.java).apply {putExtra("TEAM", getString(R.string.awayteam))}
         startActivity(intent)
     }
 
     /** Called when Button Finish Match is clicked. **/
-    fun finishMatch(view: View)
+    fun finishMatch()
     {
         TODO()
     }
 
     /** Called when Button Share Results is clicked. **/
-    fun shareResults(view: View)
+    fun shareResults()
     {
         TODO()
     }

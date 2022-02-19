@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import com.google.gson.Gson
 import de.malte.badsheet.classes.Match
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity()
      */
 
     /** Called when Button Match Settings is clicked. **/
-    fun openMatchSettings(view: View)
+    fun openMatchSettings()
     {
         val intent = Intent(this, MatchActivity::class.java).apply {}
         startActivity(intent)
@@ -58,26 +57,26 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Called when TeamA is clicked **/
-    fun openTeamA(view: View)
+    fun openTeamA()
     {
         openTeam("home")
     }
 
     /** Called when TeamB is clicked **/
-    fun openTeamB(view: View)
+    fun openTeamB()
     {
         openTeam("away")
     }
 
     /** Called when Button Scoreboard is clicked. **/
-    fun openScoreboard(view: View)
+    fun openScoreboard()
     {
         val intent = Intent(this, ScoreboardActivity::class.java).apply {}
         startActivity(intent)
     }
 
     /** Called when Button Complete Match is clicked. **/
-    fun openCompleteMatch(view: View)
+    fun openCompleteMatch()
     {
         val intent = Intent(this, CompleteMatchActivity::class.java).apply {}
         startActivity(intent)
@@ -150,7 +149,7 @@ class MainActivity : AppCompatActivity()
                 selected.remove(Integer.valueOf(which))
             }
         }
-        builder.setPositiveButton("Remove") { _, i ->
+        builder.setPositiveButton("Remove") { _, _ ->
             for (j in selected.indices)
             {
                 removeFile(files[selected[j]])
