@@ -1,17 +1,19 @@
 package de.malte.badsheet.classes
 
 import io.swagger.client.apis.DefaultApi
-import io.swagger.client.models.Player
-import io.swagger.client.models.Team
-
 
 class apiClient()
 {
     private val client = DefaultApi()
-    fun get_teamnames(): Array<Team>
+    fun get_teamnames(): MutableList<String>
     {
         val teams = client.teamsGet()
-        return teams
+        val returnList : MutableList<String> = arrayListOf()
+        for(team in teams)
+        {
+            returnList.add(team.name)
+        }
+        return returnList
     }
 
     fun update_teamnames()
@@ -19,9 +21,14 @@ class apiClient()
         client.teamsPost()
     }
 
-    fun get_players(teamname: String): Array<Player>
+    fun get_players(teamname: String): MutableList<String>
     {
         val players = client.playersTeamnameGet(teamname)
-        return players
+        val returnList : MutableList<String> = arrayListOf()
+        for(player in players)
+        {
+            returnList.add(player.name)
+        }
+        return returnList
     }
 }

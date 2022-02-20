@@ -3,6 +3,10 @@ package de.malte.badsheet.classes
 import java.util.*
 import kotlin.collections.ArrayList
 
+enum class HOME_AWAY
+{
+    HOME, AWAY
+}
 /** Class to hold data from one Team **/
 class Team(var Name: String)
 {
@@ -10,6 +14,7 @@ class Team(var Name: String)
     var Points: ArrayList<Int> = arrayListOf()
     var Sets: ArrayList<Int> = arrayListOf()
     var Games: ArrayList<Int> = arrayListOf()
+    var HomeAway: HOME_AWAY = HOME_AWAY.HOME
 
     fun getPrettyStrings(): Array<String?>
     {
