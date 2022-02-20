@@ -38,9 +38,9 @@ def players_teamname_get(teamname):  # noqa: E501
         for table in soup.findAll("table", {"class": "ruler"}):
             for child in table.findAll("caption"):
                 if "Herren" in child.getText():
-                    sex = "male"
+                    sex = "MALE"
                 elif "Damen" in child.getText():
-                    sex = "female"
+                    sex = "FEMALE"
                 else:
                     pass
                 for td in table.findAll("td", {"id": "playercell"}):
