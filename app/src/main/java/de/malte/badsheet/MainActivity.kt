@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -12,9 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import de.malte.badsheet.classes.Match
+import de.malte.badsheet.classes.apiClient
 import de.malte.badsheet.databinding.ActivityMainBinding
 import de.malte.badsheet.utility.SharedPref
-import java.io.*
+import java.io.File
+import java.io.FileInputStream
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 
 
 class MainActivity : AppCompatActivity()
@@ -23,6 +29,8 @@ class MainActivity : AppCompatActivity()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
+        val policy = ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.main = this
@@ -117,8 +125,13 @@ class MainActivity : AppCompatActivity()
             R.id.reset -> {
                 resetMatch()
                 true
-            }R.id.remove -> {
+            }
+            R.id.remove -> {
                 removeChooser()
+                true
+            }
+            R.id.update_teamnames -> {
+                update_teamnames()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -213,6 +226,13 @@ class MainActivity : AppCompatActivity()
     {
         val match = Match()
         SharedPref().SaveSharedPreference(this, match, "MATCH")
+    }
+
+    /** Update teamnames on server **/
+    fun update_teamnames()
+    {
+        val client = apiClient()
+        client.update_teamnames()
     }
 
 
