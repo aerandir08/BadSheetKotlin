@@ -30,7 +30,7 @@ class MatchActivity : AppCompatActivity()
         // Set AutoCompleteTextView for teamnames
         if(teamnames.isEmpty())
         {
-            teamnames = client.getTeamnames().toTypedArray()
+            teamnames = client.getTeamNames().toTypedArray()
         }
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             this,

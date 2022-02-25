@@ -34,7 +34,7 @@ class TeamActivity : AppCompatActivity() {
 
         players = sharedPref.loadArray(team.homeAway.toString(), this)
 
-        // Set AutoCompleteTextView for teamnames
+        // Set AutoCompleteTextView for team names
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             this,
             R.layout.support_simple_spinner_dropdown_item, players

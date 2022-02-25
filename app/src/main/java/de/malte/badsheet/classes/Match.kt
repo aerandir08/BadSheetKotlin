@@ -31,17 +31,12 @@ class Match
     /** Calculate winner of a match **/
     private fun calcMatchWinner()
     {
-        if (teamA.games.sum() > teamB.games.sum())
-        {
-            winner = teamA.Name
-        }
-        else if (teamA.games.sum() < teamB.games.sum())
-        {
-            winner = teamB.Name
-        }
-        else
-        {
-            winner = ContextUtil.context?.getString(R.string.draw) ?: "Draw"
+        winner = if (teamA.games.sum() > teamB.games.sum()) {
+            teamA.Name
+        } else if (teamA.games.sum() < teamB.games.sum()) {
+            teamB.Name
+        } else {
+            ContextUtil.context?.getString(R.string.draw) ?: "Draw"
         }
     }
 
@@ -70,26 +65,26 @@ class Match
         }
     }
 
-    fun getTeam(teamname: String): Team
+    fun getTeam(teamName: String): Team
     {
-        if (teamA.Name == teamname)
+        if (teamA.Name == teamName)
         {
             return teamA
         }
-        else if (teamB.Name == teamname)
+        else if (teamB.Name == teamName)
         {
             return teamB
         }
         return Team("")
     }
 
-    fun setTeam(teamname: String, team: Team)
+    fun setTeam(teamName: String, team: Team)
     {
-        if (teamA.Name == teamname)
+        if (teamA.Name == teamName)
         {
             teamA = team
         }
-        else if (teamB.Name == teamname)
+        else if (teamB.Name == teamName)
         {
             teamB = team
         }

@@ -8,29 +8,26 @@ class ApiClient()
     private val client = DefaultApi()
 
     /**
-     * Returns all available teamnames from server.
+     * Returns all available team names from server.
      */
-    fun getTeamnames(): MutableList<String>
+    fun getTeamNames(): MutableList<String>
     {
-        if (isInternetAvailable())
-        {
+        return if (isInternetAvailable()) {
             val teams = client.teamsGet()
             val returnList: MutableList<String> = arrayListOf()
             for (team in teams) {
                 returnList.add(team.name)
             }
-            return returnList
-        }
-        else
-        {
-            return arrayListOf()
+            returnList
+        } else {
+            arrayListOf()
         }
     }
 
     /**
      * Updates the teamnames json on the server.
      */
-    fun updateTeamnames()
+    fun updateTeamNames()
     {
         if (isInternetAvailable())
         {
@@ -40,22 +37,19 @@ class ApiClient()
 
     /**
      * Returns all players from one team.
-     * @param teamname
+     * @param teamName
      */
-    fun getPlayers(teamname: String): MutableList<String>
+    fun getPlayers(teamName: String): MutableList<String>
     {
-        if (isInternetAvailable())
-        {
-            val players = client.playersTeamnameGet(teamname)
+        return if (isInternetAvailable()) {
+            val players = client.playersTeamnameGet(teamName)
             val returnList: MutableList<String> = arrayListOf()
             for (player in players) {
                 returnList.add(player.name)
             }
-            return returnList
-        }
-        else
-        {
-            return arrayListOf()
+            returnList
+        } else {
+            arrayListOf()
         }
     }
 
@@ -64,13 +58,11 @@ class ApiClient()
      */
     private fun isInternetAvailable(): Boolean
     {
-        try {
-            val ipAddr: InetAddress = InetAddress.getByName("45.94.211.170")
-             return!ipAddr.equals("")
-        }
-        catch (e: Exception)
-        {
-            return false
+        return try {
+            val inetAddress: InetAddress = InetAddress.getByName("45.94.211.170")
+            !inetAddress.equals("")
+        } catch (e: Exception) {
+            false
         }
     }
 }

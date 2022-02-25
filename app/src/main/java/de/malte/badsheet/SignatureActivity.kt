@@ -52,14 +52,10 @@ class SignatureActivity : AppCompatActivity()
     private fun saveSignature()
     {
         // set the file name of your choice
-        val filename: String
-        if (teamname == getString(R.string.hometeam))
-        {
-            filename = "sign_home.png"
-        }
-        else
-        {
-            filename = "sign_away.png"
+        val filename: String = if (teamname == getString(R.string.hometeam)) {
+            "sign_home.png"
+        } else {
+            "sign_away.png"
         }
         saveImage(binding.signatureView.signature, filename)
     }

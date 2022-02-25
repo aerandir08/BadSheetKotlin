@@ -59,17 +59,12 @@ class Game
 
     fun whoWins()
     {
-        if (setsA > setsB)
-        {
-            winner = true
-        }
-        else if (setsA < setsB)
-        {
-            winner = false
-        }
-        else
-        {
-            winner = null
+        winner = if (setsA > setsB) {
+            true
+        } else if (setsA < setsB) {
+            false
+        } else {
+            null
         }
     }
 }

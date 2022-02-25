@@ -56,14 +56,10 @@ class MainActivity : AppCompatActivity()
     /** Called when a Team is clicked. **/
     private fun openTeam(team: String)
     {
-        val intent: Intent
-        if(team == "home")
-        {
-            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.teamA.Name)}
-        }
-        else
-        {
-            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.teamB.Name)}
+        val intent: Intent = if(team == "home") {
+            Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.teamA.Name)}
+        } else {
+            Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.teamB.Name)}
         }
         startActivity(intent)
     }
@@ -131,7 +127,7 @@ class MainActivity : AppCompatActivity()
                 true
             }
             R.id.update_teamnames -> {
-                updateTeamnames()
+                updateTeamNames()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -228,11 +224,11 @@ class MainActivity : AppCompatActivity()
         SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
-    /** Update teamnames on server **/
-    private fun updateTeamnames()
+    /** Update team names on server **/
+    private fun updateTeamNames()
     {
         val client = ApiClient()
-        client.updateTeamnames()
+        client.updateTeamNames()
     }
 
 
