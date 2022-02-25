@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import de.malte.badsheet.classes.Match
-import de.malte.badsheet.classes.apiClient
+import de.malte.badsheet.classes.ApiClient
 import de.malte.badsheet.databinding.ActivityMainBinding
 import de.malte.badsheet.utility.SharedPref
 import java.io.File
@@ -54,16 +54,16 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Called when a Team is clicked. **/
-    fun openTeam(team: String)
+    private fun openTeam(team: String)
     {
         val intent: Intent
         if(team == "home")
         {
-            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamA.Name)}
+            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.teamA.Name)}
         }
         else
         {
-            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.TeamB.Name)}
+            intent = Intent(this, TeamActivity::class.java).apply {putExtra("TEAM", match.teamB.Name)}
         }
         startActivity(intent)
     }
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity()
                 true
             }
             R.id.update_teamnames -> {
-                update_teamnames()
+                updateTeamnames()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Open Load Chooser Dialog **/
-    fun loadChooser()
+    private fun loadChooser()
     {
         val files: Array<String> = fileList()
         val builder = AlertDialog.Builder(this)
@@ -149,7 +149,7 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Open Remove Chooser Dialog **/
-    fun removeChooser()
+    private fun removeChooser()
     {
         val files: Array<String> = fileList()
         val builder = AlertDialog.Builder(this)
@@ -176,9 +176,9 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Save Match to harddrive **/
-    fun saveMatch()
+    private fun saveMatch()
     {
-        val filename: String = match.TeamA.Name + "_" + match.TeamB.Name + "_" + match.Time + ".json"
+        val filename: String = match.teamA.Name + "_" + match.teamB.Name + "_" + match.time + ".json"
         val gson = Gson()
         val jsonData: String = gson.toJson(match)
         val fileOutput = openFileOutput(filename, Context.MODE_PRIVATE)
@@ -190,7 +190,7 @@ class MainActivity : AppCompatActivity()
     /** Load Match from harddrive
      * @param filename File which should be loaded
      */
-    fun loadMatch(filename: String)
+    private fun loadMatch(filename: String)
     {
         val path = "$filesDir/$filename"
         if (File(path).exists())
@@ -211,7 +211,7 @@ class MainActivity : AppCompatActivity()
     /** Remove File
      * @param filename File which should be deleted
      */
-    fun removeFile(filename: String)
+    private fun removeFile(filename: String)
     {
         val path = "$filesDir/$filename"
         val file = File(path)
@@ -222,17 +222,17 @@ class MainActivity : AppCompatActivity()
     }
 
     /** Reset the current Match **/
-    fun resetMatch()
+    private fun resetMatch()
     {
         val match = Match()
         SharedPref().SaveSharedPreference(this, match, "MATCH")
     }
 
     /** Update teamnames on server **/
-    fun update_teamnames()
+    private fun updateTeamnames()
     {
-        val client = apiClient()
-        client.update_teamnames()
+        val client = ApiClient()
+        client.updateTeamnames()
     }
 
 

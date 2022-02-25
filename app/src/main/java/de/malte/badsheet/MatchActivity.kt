@@ -1,12 +1,11 @@
 package de.malte.badsheet
 
-import android.content.Context
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import de.malte.badsheet.classes.HOME_AWAY
 import de.malte.badsheet.classes.Match
-import de.malte.badsheet.classes.apiClient
+import de.malte.badsheet.classes.ApiClient
 import de.malte.badsheet.databinding.ActivityMatchSettingsBinding
 import de.malte.badsheet.utility.SharedPref
 
@@ -17,7 +16,7 @@ class MatchActivity : AppCompatActivity()
     private var teamnames: Array<String?> = arrayOf()
     private var match = Match()
     private val sharedPref = SharedPref()
-    private val client = apiClient()
+    private val client = ApiClient()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -31,7 +30,7 @@ class MatchActivity : AppCompatActivity()
         // Set AutoCompleteTextView for teamnames
         if(teamnames.isEmpty())
         {
-            teamnames = client.get_teamnames().toTypedArray()
+            teamnames = client.getTeamnames().toTypedArray()
         }
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
             this,
@@ -54,40 +53,40 @@ class MatchActivity : AppCompatActivity()
     }
 
     /** Get Match Settings from View **/
-    fun getMatchSettings()
+    private fun getMatchSettings()
     {
         var players: Array<String?>
         val teamA = binding.editHometeam.text.toString()
-        if(match.TeamA.Name != teamA)
+        if(match.teamA.Name != teamA)
         {
-            players = client.get_players(teamA).toTypedArray()
+            players = client.getPlayers(teamA).toTypedArray()
             sharedPref.saveArray(players, HOME_AWAY.HOME.toString(), this)
 
-            match.TeamA.Name = teamA
-            match.TeamA.HomeAway = HOME_AWAY.HOME
+            match.teamA.Name = teamA
+            match.teamA.homeAway = HOME_AWAY.HOME
         }
 
         val teamB = binding.editAwayteam.text.toString()
-        if(match.TeamB.Name != teamB)
+        if(match.teamB.Name != teamB)
         {
-            players = client.get_players(teamB).toTypedArray()
+            players = client.getPlayers(teamB).toTypedArray()
             sharedPref.saveArray(players, HOME_AWAY.AWAY.toString(), this)
-            match.TeamB.Name = teamB
-            match.TeamB.HomeAway = HOME_AWAY.AWAY
+            match.teamB.Name = teamB
+            match.teamB.homeAway = HOME_AWAY.AWAY
         }
 
-        match.Location = binding.editLocation.text.toString()
-        match.Group = binding.editGroup.text.toString()
-        match.Time = binding.editTime.text.toString()
+        match.location = binding.editLocation.text.toString()
+        match.group = binding.editGroup.text.toString()
+        match.time = binding.editTime.text.toString()
     }
 
     /** Set Match Settings to View **/
-    fun setMatchSettings()
+    private fun setMatchSettings()
     {
-        binding.editHometeam.setText(match.TeamA.Name)
-        binding.editAwayteam.setText(match.TeamB.Name)
-        binding.editLocation.setText(match.Location)
-        binding.editGroup.setText(match.Group)
-        binding.editTime.setText(match.Time)
+        binding.editHometeam.setText(match.teamA.Name)
+        binding.editAwayteam.setText(match.teamB.Name)
+        binding.editLocation.setText(match.location)
+        binding.editGroup.setText(match.group)
+        binding.editTime.setText(match.time)
     }
 }

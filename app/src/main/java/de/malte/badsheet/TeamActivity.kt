@@ -9,7 +9,6 @@ import androidx.appcompat.R
 import androidx.core.view.children
 import de.malte.badsheet.classes.Match
 import de.malte.badsheet.classes.Team
-import de.malte.badsheet.classes.apiClient
 import de.malte.badsheet.databinding.ActivityTeamBinding
 import de.malte.badsheet.utility.SharedPref
 
@@ -33,7 +32,7 @@ class TeamActivity : AppCompatActivity() {
         match = sharedPref.GetMatch(this)
         team = match.getTeam(teamname)
 
-        players = sharedPref.loadArray(team.HomeAway.toString(), this)
+        players = sharedPref.loadArray(team.homeAway.toString(), this)
 
         // Set AutoCompleteTextView for teamnames
         val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
@@ -67,7 +66,7 @@ class TeamActivity : AppCompatActivity() {
     }
 
     /** Get Player Names from View **/
-    fun getPlayerNames()
+    private fun getPlayerNames()
     {
         val layout: LinearLayout = binding.layoutLinearLayout
         var idx = 0
@@ -75,14 +74,14 @@ class TeamActivity : AppCompatActivity() {
         {
             if (child is AutoCompleteTextView)
             {
-                team.Player[idx] = child.text.toString()
+                team.player[idx] = child.text.toString()
                 idx += 1
             }
         }
     }
 
     /** Set Player Names to View **/
-    fun setPlayerNames()
+    private fun setPlayerNames()
     {
         val layout: LinearLayout = binding.layoutLinearLayout
         var idx = 0
@@ -90,7 +89,7 @@ class TeamActivity : AppCompatActivity() {
         {
             if (child is AutoCompleteTextView)
             {
-                child.setText(team.Player[idx])
+                child.setText(team.player[idx])
                     idx += 1
             }
         }

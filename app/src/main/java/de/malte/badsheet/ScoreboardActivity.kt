@@ -42,7 +42,7 @@ class ScoreboardActivity : AppCompatActivity()
      * @param textfield Textfield to get Data from
      * @return Array of both Points
      */
-    fun getDigits(textfield: EditText): ArrayList<Int>
+    private fun getDigits(textfield: EditText): ArrayList<Int>
     {
         val value = textfield.text.toString()
         val parts = value.split("-")
@@ -57,7 +57,7 @@ class ScoreboardActivity : AppCompatActivity()
     }
 
     /** Get Scores from View **/
-    fun getScores()
+    private fun getScores()
     {
         val layout: TableLayout = binding.layoutTablelayout
         var idx = 0
@@ -70,8 +70,8 @@ class ScoreboardActivity : AppCompatActivity()
                     if (edit is EditText)
                     {
                         val points = getDigits(edit)
-                        match.Scoreboard.Score[idx] = points[0]
-                        match.Scoreboard.Score[idx + 1] = points[1]
+                        match.scoreboard.score[idx] = points[0]
+                        match.scoreboard.score[idx + 1] = points[1]
                         idx += 2
                     }
                 }
@@ -80,7 +80,7 @@ class ScoreboardActivity : AppCompatActivity()
     }
 
     /** Set Scores to View **/
-    fun setScores()
+    private fun setScores()
     {
         val layout: TableLayout = binding.layoutTablelayout
         var idx = 0
@@ -93,7 +93,7 @@ class ScoreboardActivity : AppCompatActivity()
                 {
                     if (edit is EditText)
                     {
-                        text = "${match.Scoreboard.Score[idx]}-${match.Scoreboard.Score[idx+1]}"
+                        text = "${match.scoreboard.score[idx]}-${match.scoreboard.score[idx+1]}"
                         if (text == "0-0")
                         {
                             edit.setText("")
@@ -110,13 +110,13 @@ class ScoreboardActivity : AppCompatActivity()
     }
 
     /** Set Names **/
-    fun setNames()
+    private fun setNames()
     {
         val layout: TableLayout = binding.layoutTablelayout
 
         // Build List with alternating values from both teams
-        val namesA = match.TeamA.getPrettyStrings()
-        val namesB = match.TeamB.getPrettyStrings()
+        val namesA = match.teamA.getPrettyStrings()
+        val namesB = match.teamB.getPrettyStrings()
         val names = namesA.zip(namesB).flatMap { listOf(it.first, it.second) } + namesA.drop(namesB.size)
 
         var idx = 0
@@ -130,7 +130,7 @@ class ScoreboardActivity : AppCompatActivity()
                     {
                         if (field.text == "")
                         {
-                            field.setText(names[idx])
+                            field.text = names[idx]
                             idx += 1
                         }
                     }

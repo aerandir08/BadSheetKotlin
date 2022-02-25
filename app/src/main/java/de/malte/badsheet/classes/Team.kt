@@ -10,23 +10,23 @@ enum class HOME_AWAY
 /** Class to hold data from one Team **/
 class Team(var Name: String)
 {
-    var Player = ArrayList<String>(Collections.nCopies(12, ""))
-    var Points: ArrayList<Int> = arrayListOf()
-    var Sets: ArrayList<Int> = arrayListOf()
-    var Games: ArrayList<Int> = arrayListOf()
-    var HomeAway: HOME_AWAY = HOME_AWAY.HOME
+    var player = ArrayList<String>(Collections.nCopies(12, ""))
+    var points: ArrayList<Int> = arrayListOf()
+    var sets: ArrayList<Int> = arrayListOf()
+    var games: ArrayList<Int> = arrayListOf()
+    var homeAway: HOME_AWAY = HOME_AWAY.HOME
 
     fun getPrettyStrings(): Array<String?>
     {
         val names = arrayOfNulls<String>(8)
-        names[0] = "${Player[0]}\n${Player[1]}"
-        names[1] = "${Player[2]}\n${Player[3]}"
-        names[2] = "${Player[4]}\n${Player[5]}"
-        names[3] = Player[6]
-        names[4] = Player[7]
-        names[5] = Player[8]
-        names[6] = Player[9]
-        names[7] = "${Player[10]}\n${Player[11]}"
+        names[0] = "${player[0]}\n${player[1]}"
+        names[1] = "${player[2]}\n${player[3]}"
+        names[2] = "${player[4]}\n${player[5]}"
+        names[3] = player[6]
+        names[4] = player[7]
+        names[5] = player[8]
+        names[6] = player[9]
+        names[7] = "${player[10]}\n${player[11]}"
 
         return names
     }

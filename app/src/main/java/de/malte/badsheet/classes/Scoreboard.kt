@@ -5,7 +5,7 @@ import kotlin.collections.ArrayList
 
 class Scoreboard
 {
-    var Score = ArrayList<Int>(Collections.nCopies(48, 0))
+    var score = ArrayList<Int>(Collections.nCopies(48, 0))
     var setsA = 0
     var setsB = 0
     var gamesA = 0

@@ -16,9 +16,8 @@ class CompleteMatchActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_complete_match)
         val binding: ActivityCompleteMatchBinding = DataBindingUtil.setContentView(this, R.layout.activity_complete_match)
-        binding.setCompleteMatch(this)
+        binding.completeMatch = this
 
         title = getString(R.string.complete_match)
 

@@ -6,24 +6,24 @@ import de.malte.badsheet.utility.ContextUtil
 /** Class to hold data from a Match **/
 class Match
 {
-    var TeamA: Team = Team("")
-    var TeamB: Team = Team("")
-    var Location: String = ""
-    var Group: String = ""
-    var Time: String = ""
-    var Scoreboard: Scoreboard = Scoreboard()
-    var Winner: String = ""
+    var teamA: Team = Team("")
+    var teamB: Team = Team("")
+    var location: String = ""
+    var group: String = ""
+    var time: String = ""
+    var scoreboard: Scoreboard = Scoreboard()
+    var winner: String = ""
 
     /** Calculate all points, sets, games and the Match-winner **/
     fun calcMatch()
     {
-        Scoreboard.resetValues()
+        scoreboard.resetValues()
         var list: MutableList<Int>
         // Go over all 8 Games
         for (i in 0..47 step 6)
         {
-            list = Scoreboard.Score.subList(i, i+6)
-            addGame(Scoreboard.calcGame(list))
+            list = scoreboard.score.subList(i, i+6)
+            addGame(scoreboard.calcGame(list))
         }
         calcMatchWinner()
     }
@@ -31,67 +31,67 @@ class Match
     /** Calculate winner of a match **/
     private fun calcMatchWinner()
     {
-        if (TeamA.Games.sum() > TeamB.Games.sum())
+        if (teamA.games.sum() > teamB.games.sum())
         {
-            Winner = TeamA.Name
+            winner = teamA.Name
         }
-        else if (TeamA.Games.sum() < TeamB.Games.sum())
+        else if (teamA.games.sum() < teamB.games.sum())
         {
-            Winner = TeamB.Name
+            winner = teamB.Name
         }
         else
         {
-            Winner = ContextUtil.context?.getString(R.string.draw) ?: "Draw"
+            winner = ContextUtil.context?.getString(R.string.draw) ?: "Draw"
         }
     }
 
     /** Update after one Game **/
     private fun addGame(game: Game)
     {
-        TeamA.Sets.add(game.setsA)
-        TeamB.Sets.add(game.setsB)
-        TeamA.Points.add(game.pointsA)
-        TeamB.Points.add(game.pointsB)
+        teamA.sets.add(game.setsA)
+        teamB.sets.add(game.setsB)
+        teamA.points.add(game.pointsA)
+        teamB.points.add(game.pointsB)
 
         if(game.winner == true)
         {
-            TeamA.Games.add(1)
-            TeamB.Games.add(0)
+            teamA.games.add(1)
+            teamB.games.add(0)
         }
         else if (game.winner == false)
         {
-            TeamA.Games.add(0)
-            TeamB.Games.add(1)
+            teamA.games.add(0)
+            teamB.games.add(1)
         }
         else
         {
-            TeamA.Games.add(0)
-            TeamB.Games.add(0)
+            teamA.games.add(0)
+            teamB.games.add(0)
         }
     }
 
     fun getTeam(teamname: String): Team
     {
-        if (TeamA.Name == teamname)
+        if (teamA.Name == teamname)
         {
-            return TeamA
+            return teamA
         }
-        else if (TeamB.Name == teamname)
+        else if (teamB.Name == teamname)
         {
-            return TeamB
+            return teamB
         }
         return Team("")
     }
 
     fun setTeam(teamname: String, team: Team)
     {
-        if (TeamA.Name == teamname)
+        if (teamA.Name == teamname)
         {
-            TeamA = team
+            teamA = team
         }
-        else if (TeamB.Name == teamname)
+        else if (teamB.Name == teamname)
         {
-            TeamB = team
+            teamB = team
         }
     }
 }

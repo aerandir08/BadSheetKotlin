@@ -3,10 +3,14 @@ package de.malte.badsheet.classes
 import io.swagger.client.apis.DefaultApi
 import java.net.InetAddress
 
-class apiClient()
+class ApiClient()
 {
     private val client = DefaultApi()
-    fun get_teamnames(): MutableList<String>
+
+    /**
+     * Returns all available teamnames from server.
+     */
+    fun getTeamnames(): MutableList<String>
     {
         if (isInternetAvailable())
         {
@@ -23,7 +27,10 @@ class apiClient()
         }
     }
 
-    fun update_teamnames()
+    /**
+     * Updates the teamnames json on the server.
+     */
+    fun updateTeamnames()
     {
         if (isInternetAvailable())
         {
@@ -31,7 +38,11 @@ class apiClient()
         }
     }
 
-    fun get_players(teamname: String): MutableList<String>
+    /**
+     * Returns all players from one team.
+     * @param teamname
+     */
+    fun getPlayers(teamname: String): MutableList<String>
     {
         if (isInternetAvailable())
         {
@@ -48,6 +59,9 @@ class apiClient()
         }
     }
 
+    /**
+     * Checks if internet and the server are available.
+     */
     private fun isInternetAvailable(): Boolean
     {
         try {
